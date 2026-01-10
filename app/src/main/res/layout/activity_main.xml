@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/turn_message_x"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/gridLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:columnCount="3"
+        android:rowCount="3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonPlayAgain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statusText">
+        
+        <!-- Row 0 -->
+        <Button
+            android:id="@+id/cell_00"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/cell_01"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/cell_02"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <!-- Row 1 -->
+        <Button
+            android:id="@+id/cell_10"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/cell_11"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/cell_12"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <!-- Row 2 -->
+        <Button
+            android:id="@+id/cell_20"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/cell_21"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+        <Button
+            android:id="@+id/cell_22"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_margin="4dp"
+            android:textSize="32sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            app:strokeWidth="2dp" />
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/buttonPlayAgain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/play_again"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
