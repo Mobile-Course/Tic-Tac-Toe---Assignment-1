@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Tic Tac Toe</string>
+    <string name="turn_message_x">Player X Turn</string>
+    <string name="turn_message_o">Player O Turn</string>
+    <string name="win_message_x">X Wins!</string>
+    <string name="win_message_o">O Wins!</string>
+    <string name="draw_message">It\'s a Draw!</string>
+    <string name="play_again">Play Again</string>
+</resources>
