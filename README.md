@@ -1,4 +1,8 @@
 # Tic Tac Toe
+<img width="291" height="540" alt="image" src="https://github.com/user-attachments/assets/e4856a08-77f7-40e8-841d-69b6135d9bc8" />
+<img width="335" height="541" alt="image" src="https://github.com/user-attachments/assets/37c49cf9-f39d-420c-b816-0aa3d3ca4b55" />
+
+
 
 A simple two-player Tic Tac Toe game for Android using Kotlin and MVVM architecture.
 
