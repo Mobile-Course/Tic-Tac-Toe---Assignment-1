@@ -32,105 +32,96 @@
         app:layout_constraintTop_toBottomOf="@+id/statusText">
         
         <!-- Row 0 -->
-        <Button
+        <ImageButton
             android:id="@+id/cell_00"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cell_01"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cell_02"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
         <!-- Row 1 -->
-        <Button
+        <ImageButton
             android:id="@+id/cell_10"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cell_11"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cell_12"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
         <!-- Row 2 -->
-        <Button
+        <ImageButton
             android:id="@+id/cell_20"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cell_21"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
-        <Button
+        <ImageButton
             android:id="@+id/cell_22"
             style="@style/Widget.Material3.Button.OutlinedButton"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_margin="4dp"
-            android:textSize="32sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
             app:strokeWidth="2dp" />
 
     </GridLayout>

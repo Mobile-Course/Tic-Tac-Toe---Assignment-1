@@ -3,6 +3,7 @@ package com.example.tictactoe.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tictactoe.R
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: GameViewModel by viewModels()
-    private val buttons = Array(3) { arrayOfNulls<Button>(3) }
+    private val buttons = Array(3) { arrayOfNulls<ImageButton>(3) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,11 +73,12 @@ class MainActivity : AppCompatActivity() {
     private fun updateBoard(board: Array<Array<CellValue>>) {
         for (i in 0..2) {
             for (j in 0..2) {
-                buttons[i][j]?.text = when (board[i][j]) {
-                    CellValue.X -> "X"
-                    CellValue.O -> "O"
-                    CellValue.EMPTY -> ""
+                val imageRes = when (board[i][j]) {
+                    CellValue.X -> R.drawable.ic_x
+                    CellValue.O -> R.drawable.ic_o
+                    CellValue.EMPTY -> 0 // Use 0 to clear image
                 }
+                buttons[i][j]?.setImageResource(imageRes)
             }
         }
     }
