@@ -16,7 +16,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: GameViewModel by viewModels()
-    private val buttons = Array(3) { arrayOfNulls<Button>(3) }
+    
+    // Lazy initialization of buttons 2D array
+    private val buttons by lazy {
+        arrayOf(
+            arrayOf(binding.cell00, binding.cell01, binding.cell02),
+            arrayOf(binding.cell10, binding.cell11, binding.cell12),
+            arrayOf(binding.cell20, binding.cell21, binding.cell22)
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +36,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initViews() {
-        // Map buttons to array
-        buttons[0][0] = binding.cell00
-        buttons[0][1] = binding.cell01
-        buttons[0][2] = binding.cell02
-        buttons[1][0] = binding.cell10
-        buttons[1][1] = binding.cell11
-        buttons[1][2] = binding.cell12
-        buttons[2][0] = binding.cell20
-        buttons[2][1] = binding.cell21
-        buttons[2][2] = binding.cell22
-
         // Set click listeners
-        for (i in 0..2) {
-            for (j in 0..2) {
-                buttons[i][j]?.setOnClickListener {
-                    viewModel.onCellClicked(i, j)
+        buttons.forEachIndexed { row, buttonRow ->
+            buttonRow.forEachIndexed { col, button ->
+                button.setOnClickListener {
+                    viewModel.onCellClicked(row, col)
                 }
             }
         }
@@ -54,14 +51,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observeViewModel() {
-        viewModel.board.observe(this) { board ->
-            updateBoard(board)
-        }
-
-        viewModel.gameStatus.observe(this) { status ->
-            updateStatus(status)
-        }
-
+        viewModel.board.observe(this) { updateBoard(it) }
+        viewModel.gameStatus.observe(this) { updateStatus(it) }
         viewModel.currentPlayer.observe(this) { player ->
             if (viewModel.gameStatus.value == GameStatus.IN_PROGRESS) {
                 updateTurnMessage(player)
@@ -70,9 +61,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateBoard(board: Array<Array<CellValue>>) {
-        for (i in 0..2) {
-            for (j in 0..2) {
-                buttons[i][j]?.text = when (board[i][j]) {
+        buttons.forEachIndexed { i, row ->
+            row.forEachIndexed { j, button ->
+                button.text = when (board[i][j]) {
                     CellValue.X -> "X"
                     CellValue.O -> "O"
                     CellValue.EMPTY -> ""
@@ -82,35 +73,30 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateStatus(status: GameStatus) {
-        when (status) {
-            GameStatus.IN_PROGRESS -> {
-                binding.buttonPlayAgain.visibility = View.INVISIBLE
-                binding.buttonPlayAgain.isEnabled = false
-                updateTurnMessage(viewModel.currentPlayer.value ?: Player.X)
-            }
-            GameStatus.PLAYER_X_WINS -> {
-                binding.statusText.text = getString(R.string.win_message_x)
-                binding.buttonPlayAgain.visibility = View.VISIBLE
-                binding.buttonPlayAgain.isEnabled = true
-            }
-            GameStatus.PLAYER_O_WINS -> {
-                binding.statusText.text = getString(R.string.win_message_o)
-                binding.buttonPlayAgain.visibility = View.VISIBLE
-                binding.buttonPlayAgain.isEnabled = true
-            }
-            GameStatus.DRAW -> {
-                binding.statusText.text = getString(R.string.draw_message)
-                binding.buttonPlayAgain.visibility = View.VISIBLE
-                binding.buttonPlayAgain.isEnabled = true
-            }
+        val isGameOver = status != GameStatus.IN_PROGRESS
+        binding.buttonPlayAgain.visibility = if (isGameOver) View.VISIBLE else View.INVISIBLE
+        binding.buttonPlayAgain.isEnabled = isGameOver
+
+        if (status == GameStatus.IN_PROGRESS) {
+            updateTurnMessage(viewModel.currentPlayer.value ?: Player.X)
+            return
+        }
+
+        val messageResId = when (status) {
+            GameStatus.PLAYER_X_WINS -> R.string.win_message_x
+            GameStatus.PLAYER_O_WINS -> R.string.win_message_o
+            GameStatus.DRAW -> R.string.draw_message
+            else -> 0 // Should not happen
+        }
+        
+        if (messageResId != 0) {
+            binding.statusText.text = getString(messageResId)
         }
     }
 
     private fun updateTurnMessage(player: Player) {
-        binding.statusText.text = if (player == Player.X) {
-            getString(R.string.turn_message_x)
-        } else {
-            getString(R.string.turn_message_o)
-        }
+        binding.statusText.text = getString(
+            if (player == Player.X) R.string.turn_message_x else R.string.turn_message_o
+        )
     }
 }

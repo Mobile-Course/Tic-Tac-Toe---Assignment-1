@@ -33,35 +33,45 @@ class GameModel {
     }
 
     fun makeMove(row: Int, col: Int): Boolean {
-        if (row < 0 || row > 2 || col < 0 || col > 2) return false
-        if (board[row][col] != CellValue.EMPTY) return false
-        if (status != GameStatus.IN_PROGRESS) return false
+        if (!isValidMove(row, col)) return false
 
-        val value = if (currentPlayer == Player.X) CellValue.X else CellValue.O
-        board[row][col] = value
+        board[row][col] = if (currentPlayer == Player.X) CellValue.X else CellValue.O
 
-        if (checkWin(row, col, value)) {
+        if (checkWin(row, col)) {
             status = if (currentPlayer == Player.X) GameStatus.PLAYER_X_WINS else GameStatus.PLAYER_O_WINS
         } else if (checkDraw()) {
             status = GameStatus.DRAW
         } else {
-            currentPlayer = if (currentPlayer == Player.X) Player.O else Player.X
+            switchPlayer()
         }
         return true
     }
 
-    private fun checkWin(lastRow: Int, lastCol: Int, playerValue: CellValue): Boolean {
-        // Check row
-        if (board[lastRow].all { it == playerValue }) return true
+    private fun isValidMove(row: Int, col: Int): Boolean {
+        return row in 0..2 && col in 0..2 && 
+               board[row][col] == CellValue.EMPTY && 
+               status == GameStatus.IN_PROGRESS
+    }
+
+    private fun switchPlayer() {
+        currentPlayer = if (currentPlayer == Player.X) Player.O else Player.X
+    }
+
+    private fun checkWin(lastRow: Int, lastCol: Int): Boolean {
+        val symbol = board[lastRow][lastCol]
+        val n = 3
+
+        // Check Row
+        if ((0 until n).all { board[lastRow][it] == symbol }) return true
         
-        // Check col
-        if (board.all { it[lastCol] == playerValue }) return true
+        // Check Column
+        if ((0 until n).all { board[it][lastCol] == symbol }) return true
 
-        // Check main diagonal
-        if (lastRow == lastCol && (0..2).all { board[it][it] == playerValue }) return true
+        // Check Main Diagonal
+        if (lastRow == lastCol && (0 until n).all { board[it][it] == symbol }) return true
 
-        // Check anti-diagonal
-        if (lastRow + lastCol == 2 && (0..2).all { board[it][2 - it] == playerValue }) return true
+        // Check Anti-Diagonal
+        if (lastRow + lastCol == n - 1 && (0 until n).all { board[it][n - 1 - it] == symbol }) return true
 
         return false
     }
