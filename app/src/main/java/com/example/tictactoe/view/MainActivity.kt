@@ -64,12 +64,12 @@ class MainActivity : AppCompatActivity() {
     private fun updateBoard(board: Array<Array<CellValue>>) {
         buttons.forEachIndexed { i, row ->
             row.forEachIndexed { j, button ->
-                button.text = when (board[i][j]) {
-                    CellValue.X -> "X"
-                    CellValue.O -> "O"
-                    CellValue.EMPTY -> ""
+                val imageRes = when (board[i][j]) {
+                    CellValue.X -> R.drawable.ic_x
+                    CellValue.O -> R.drawable.ic_o
+                    CellValue.EMPTY -> 0
                 }
-                buttons[i][j]?.setImageResource(imageRes)
+                button.setImageResource(imageRes)
             }
         }
     }
