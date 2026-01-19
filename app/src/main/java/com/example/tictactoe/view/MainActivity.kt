@@ -3,6 +3,7 @@ package com.example.tictactoe.view
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tictactoe.R
@@ -68,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                     CellValue.O -> "O"
                     CellValue.EMPTY -> ""
                 }
+                buttons[i][j]?.setImageResource(imageRes)
             }
         }
     }
