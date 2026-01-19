@@ -13,13 +13,13 @@ class GameViewModel : ViewModel() {
     private val gameModel = GameModel()
 
     private val _board = MutableLiveData<Array<Array<CellValue>>>()
-    val board: LiveData<Array<Array<CellValue>>> = _board
+    val board: LiveData<Array<Array<CellValue>>> get() = _board
 
     private val _gameStatus = MutableLiveData<GameStatus>()
-    val gameStatus: LiveData<GameStatus> = _gameStatus
+    val gameStatus: LiveData<GameStatus> get() = _gameStatus
 
     private val _currentPlayer = MutableLiveData<Player>()
-    val currentPlayer: LiveData<Player> = _currentPlayer
+    val currentPlayer: LiveData<Player> get() = _currentPlayer
 
     init {
         updateGameState()
